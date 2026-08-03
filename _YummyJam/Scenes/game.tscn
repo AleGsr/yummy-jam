@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c0ut52nq0uwxr"]
+
+[node name="Game" type="Node2D" unique_id=2036357315]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=40155113]
+
+[node name="PanelTop" type="HBoxContainer" parent="UI" unique_id=1475283123]
+offset_top = -2071.0
+offset_right = 3517.0
+offset_bottom = 40.0
+
+[node name="LabelTimer" type="Label" parent="UI/PanelTop" unique_id=274151536]
+layout_mode = 2
+
+[node name="LabelPoints" type="Label" parent="UI/PanelTop" unique_id=600902032]
+layout_mode = 2
+
+[node name="CultivationSystem" type="Node2D" parent="." unique_id=1258887486]
+
+[node name="Stations" type="Node2D" parent="." unique_id=1101132020]

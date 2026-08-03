@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://c1rba7lk3321a"]
+
+[ext_resource type="Script" uid="uid://db1l3l8nrf43s" path="res://_YummyJam/Scripts/UI/menu.gd" id="1_qyu7l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpc0q"]
+bg_color = Color(0.39075086, 1.1334791e-05, 0.29530394, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_177iq"]
+bg_color = Color(0.39215687, 0, 0.29411766, 1)
+
+[node name="Menu" type="Control" unique_id=532842330]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qyu7l")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1404663793]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.8627451, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=652337150]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -47.0
+offset_right = 163.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 42
+
+[node name="Play_bttn" type="Button" parent="VBoxContainer" unique_id=1983835473]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_rpc0q")
+text = "Play"
+
+[node name="Controls_bttn" type="Button" parent="VBoxContainer" unique_id=1298195299]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_177iq")
+text = "Controls"
+
+[node name="Credits_bttn" type="Button" parent="VBoxContainer" unique_id=1652065325]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_177iq")
+text = "Credits"
+
+[node name="Exit_bttn" type="Button" parent="VBoxContainer" unique_id=1003983443]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_177iq")
+text = "Exit"
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=425866533]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -376.0
+offset_top = 40.0
+offset_right = 387.0
+offset_bottom = 248.0
+grow_horizontal = 2
+theme_override_colors/search_result_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+theme_override_font_sizes/font_size = 130
+text = "Yummy Jam"
+
+[connection signal="pressed" from="VBoxContainer/Play_bttn" to="." method="_on_play_bttn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Controls_bttn" to="." method="_on_controls_bttn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits_bttn" to="." method="_on_credits_bttn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit_bttn" to="." method="_on_exit_bttn_pressed"]
