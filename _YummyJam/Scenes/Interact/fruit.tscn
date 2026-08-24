@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://3acnjb3cs0q0"]
+
+[ext_resource type="Script" uid="uid://cdeutjntrhncb" path="res://_YummyJam/Scripts/Interact/fruit.gd" id="1_p2kak"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpc0q"]
+size = Vector2(0.09756097, 0.09756097)
+
+[node name="Fruit" type="Area2D" unique_id=1883467053]
+script = ExtResource("1_p2kak")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1365346307]
+custom_minimum_size = Vector2(1, 1)
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.81966126, 0.018628791, 9.62615e-07, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1906362575]
+visible = false
+scale = Vector2(123, 123)
+shape = SubResource("RectangleShape2D_rpc0q")

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c0ut52nq0uwxr"]
+
+[ext_resource type="Script" uid="uid://brycudr0prjd2" path="res://_YummyJam/Scripts/Game/game.gd" id="1_8ol67"]
+[ext_resource type="PackedScene" uid="uid://3w63541lfamq" path="res://_YummyJam/Scenes/Interact/pot.tscn" id="1_w6pw3"]
+[ext_resource type="PackedScene" uid="uid://3acnjb3cs0q0" path="res://_YummyJam/Scenes/Interact/fruit.tscn" id="3_kee16"]
+[ext_resource type="PackedScene" uid="uid://dmmggkdq1vjx5" path="res://_YummyJam/Scenes/Interact/conveyor.tscn" id="4_kxyld"]
+
+[node name="Game" type="Node2D" unique_id=2036357315]
+script = ExtResource("1_8ol67")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=40155113]
+
+[node name="PanelTop" type="HBoxContainer" parent="UI" unique_id=1475283123]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="LabelTimer" type="Label" parent="UI/PanelTop" unique_id=1665859036]
+layout_mode = 2
+text = "Time: 03:00"
+
+[node name="LabelPoints" type="Label" parent="UI/PanelTop" unique_id=713258245]
+layout_mode = 2
+text = "Points: 0"
+
+[node name="LabelStation" type="Label" parent="UI/PanelTop" unique_id=1271962466]
+layout_mode = 2
+text = "Station: 1. Lava"
+
+[node name="CultivationSystem" type="Node2D" parent="." unique_id=1258887486]
+
+[node name="Stations" type="Node2D" parent="." unique_id=1101132020]
+
+[node name="Pot" parent="." unique_id=1883467053 instance=ExtResource("1_w6pw3")]
+position = Vector2(101, 543)
+
+[node name="Fruit" parent="." unique_id=1303107448 instance=ExtResource("3_kee16")]
+position = Vector2(116, 450)
+
+[node name="Pot2" parent="." unique_id=400367136 instance=ExtResource("1_w6pw3")]
+position = Vector2(186, 481)
+
+[node name="Pot3" parent="." unique_id=653535915 instance=ExtResource("1_w6pw3")]
+position = Vector2(270, 546)
+
+[node name="Conveyor" parent="." unique_id=1999575189 instance=ExtResource("4_kxyld")]
+position = Vector2(640, 420)

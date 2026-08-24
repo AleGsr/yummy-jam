@@ -1,20 +1,102 @@
 [gd_scene format=3 uid="uid://c0ut52nq0uwxr"]
 
+[ext_resource type="Script" uid="uid://brycudr0prjd2" path="res://_YummyJam/Scripts/Game/game.gd" id="1_8ol67"]
+[ext_resource type="PackedScene" uid="uid://3w63541lfamq" path="res://_YummyJam/Scenes/Interact/CultivationSystem/pot.tscn" id="1_w6pw3"]
+[ext_resource type="PackedScene" uid="uid://3acnjb3cs0q0" path="res://_YummyJam/Scenes/Interact/fruit.tscn" id="3_kee16"]
+[ext_resource type="PackedScene" uid="uid://b482ucloq6pwc" path="res://_YummyJam/Scenes/Interact/CultivationSystem/water_can.tscn" id="3_kpmb5"]
+[ext_resource type="PackedScene" uid="uid://dnkjuxla5lm3r" path="res://_YummyJam/Scenes/Interact/CultivationSystem/seeds.tscn" id="4_g1ddt"]
+[ext_resource type="PackedScene" uid="uid://dmmggkdq1vjx5" path="res://_YummyJam/Scenes/Interact/ProductionSystem/conveyor.tscn" id="4_kxyld"]
+[ext_resource type="PackedScene" uid="uid://c5wwesmgyibhr" path="res://_YummyJam/Scenes/Interact/ProductionSystem/plate_station.tscn" id="6_gm2dx"]
+[ext_resource type="PackedScene" uid="uid://cjawj3helh64q" path="res://_YummyJam/Scenes/Interact/ProductionSystem/box.tscn" id="7_af72o"]
+
 [node name="Game" type="Node2D" unique_id=2036357315]
+script = ExtResource("1_8ol67")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=40155113]
 
 [node name="PanelTop" type="HBoxContainer" parent="UI" unique_id=1475283123]
-offset_top = -2071.0
-offset_right = 3517.0
-offset_bottom = 40.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+alignment = 1
 
-[node name="LabelTimer" type="Label" parent="UI/PanelTop" unique_id=274151536]
+[node name="LabelTimer" type="Label" parent="UI/PanelTop" unique_id=1665859036]
 layout_mode = 2
+text = "Time: 03:00"
 
-[node name="LabelPoints" type="Label" parent="UI/PanelTop" unique_id=600902032]
+[node name="LabelPoints" type="Label" parent="UI/PanelTop" unique_id=713258245]
 layout_mode = 2
+text = "Points: 0"
+
+[node name="LabelStation" type="Label" parent="UI/PanelTop" unique_id=1271962466]
+layout_mode = 2
+text = "Station: 1. Lava"
+
+[node name="ProductionSystem" type="Node2D" parent="." unique_id=2054464754]
+
+[node name="FloorBackground" type="ColorRect" parent="ProductionSystem" unique_id=1628844998]
+offset_left = 350.0
+offset_top = 450.0
+offset_right = 1150.0
+offset_bottom = 650.0
+mouse_filter = 2
+color = Color(0.24964723, 0.25890002, 0.3188798, 1)
+
+[node name="WallBackground" type="ColorRect" parent="ProductionSystem" unique_id=1577497943]
+offset_left = 350.0
+offset_right = 1150.0
+offset_bottom = 450.0
+mouse_filter = 2
+color = Color(0.54355913, 0.5553405, 0.63920933, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ProductionSystem" unique_id=1095687593]
+offset_left = 373.0
+offset_top = 441.0
+offset_right = 1073.0
+offset_bottom = 501.0
+color = Color(0.6052743, 0.6052743, 0.6052743, 1)
+
+[node name="Stations" type="Node2D" parent="ProductionSystem" unique_id=1101132020]
+
+[node name="Conveyor" parent="ProductionSystem" unique_id=1999575189 instance=ExtResource("4_kxyld")]
+position = Vector2(723, 426)
+
+[node name="PlateStation" parent="ProductionSystem" unique_id=478296273 instance=ExtResource("6_gm2dx")]
+position = Vector2(422, 387)
 
 [node name="CultivationSystem" type="Node2D" parent="." unique_id=1258887486]
 
-[node name="Stations" type="Node2D" parent="." unique_id=1101132020]
+[node name="GrassBackground" type="ColorRect" parent="CultivationSystem" unique_id=750516863]
+offset_top = 450.0
+offset_right = 350.0
+offset_bottom = 650.0
+mouse_filter = 2
+color = Color(0.11539843, 0.29596302, 0.076772444, 1)
+
+[node name="SkyBackground" type="ColorRect" parent="CultivationSystem" unique_id=550915697]
+offset_right = 350.0
+offset_bottom = 450.0
+mouse_filter = 2
+color = Color(0.41877314, 0.70175827, 0.889334, 1)
+
+[node name="Pot" parent="CultivationSystem" unique_id=1883467053 instance=ExtResource("1_w6pw3")]
+position = Vector2(82, 446)
+
+[node name="Pot2" parent="CultivationSystem" unique_id=400367136 instance=ExtResource("1_w6pw3")]
+position = Vector2(176, 447)
+
+[node name="Pot3" parent="CultivationSystem" unique_id=653535915 instance=ExtResource("1_w6pw3")]
+position = Vector2(265, 446)
+
+[node name="WaterCan" parent="CultivationSystem" unique_id=2090312606 instance=ExtResource("3_kpmb5")]
+position = Vector2(127, 537)
+
+[node name="Seeds" parent="CultivationSystem" unique_id=2108584022 instance=ExtResource("4_g1ddt")]
+position = Vector2(221, 535)
+
+[node name="Box" parent="." unique_id=862205636 instance=ExtResource("7_af72o")]
+position = Vector2(1113, 472)
+
+[node name="Fruit" parent="." unique_id=1303107448 instance=ExtResource("3_kee16")]
+position = Vector2(338, 366)

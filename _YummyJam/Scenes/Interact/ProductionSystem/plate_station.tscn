@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c5wwesmgyibhr"]
+
+[ext_resource type="Script" uid="uid://c5wics5u7sxya" path="res://_YummyJam/Scripts/Interact/conveyor.gd" id="1_i6d4s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpc0q"]
+size = Vector2(0.82926846, 0.18699187)
+
+[node name="PlateStation" type="Area2D" unique_id=1883467053]
+script = ExtResource("1_i6d4s")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1365346307]
+custom_minimum_size = Vector2(1, 1)
+offset_left = -50.0
+offset_top = -25.0
+offset_right = 50.0
+offset_bottom = 25.0
+mouse_filter = 2
+color = Color(0.35737196, 0.27848133, 0.26317486, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1906362575]
+position = Vector2(0, -12.5)
+scale = Vector2(123, 123)
+shape = SubResource("RectangleShape2D_rpc0q")
+
+[node name="LabelDirection" type="Label" parent="." unique_id=1144288296]
+offset_left = -17.0
+offset_top = -11.0
+offset_right = 23.0
+offset_bottom = 12.0
