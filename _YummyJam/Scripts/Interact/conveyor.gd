@@ -36,6 +36,8 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Fruta") or area.name.begins_with("Fruta") or "siendo_arrastrada" in area:
 		if not frutas_en_banda.has(area):
 			frutas_en_banda.append(area)
+			# Cambiamos "fruta" por "area" aquí:
+			area.set("paso_por_banda", true)
 
 func _on_area_exited(area: Area2D) -> void:
 	if frutas_en_banda.has(area):

@@ -5,9 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://3acnjb3cs0q0" path="res://_YummyJam/Scenes/Interact/fruit.tscn" id="3_kee16"]
 [ext_resource type="PackedScene" uid="uid://b482ucloq6pwc" path="res://_YummyJam/Scenes/Interact/CultivationSystem/water_can.tscn" id="3_kpmb5"]
 [ext_resource type="PackedScene" uid="uid://dnkjuxla5lm3r" path="res://_YummyJam/Scenes/Interact/CultivationSystem/seeds.tscn" id="4_g1ddt"]
+[ext_resource type="PackedScene" uid="uid://c45rs8loelurk" path="res://_YummyJam/Scenes/Interact/ProductionSystem/station.tscn" id="4_gm2dx"]
 [ext_resource type="PackedScene" uid="uid://dmmggkdq1vjx5" path="res://_YummyJam/Scenes/Interact/ProductionSystem/conveyor.tscn" id="4_kxyld"]
-[ext_resource type="PackedScene" uid="uid://c5wwesmgyibhr" path="res://_YummyJam/Scenes/Interact/ProductionSystem/plate_station.tscn" id="6_gm2dx"]
 [ext_resource type="PackedScene" uid="uid://cjawj3helh64q" path="res://_YummyJam/Scenes/Interact/ProductionSystem/box.tscn" id="7_af72o"]
+[ext_resource type="PackedScene" uid="uid://c3d4ml18m4wog" path="res://_YummyJam/Scenes/Interact/trashcan.tscn" id="10_af72o"]
 
 [node name="Game" type="Node2D" unique_id=2036357315]
 script = ExtResource("1_8ol67")
@@ -62,8 +63,29 @@ color = Color(0.6052743, 0.6052743, 0.6052743, 1)
 [node name="Conveyor" parent="ProductionSystem" unique_id=1999575189 instance=ExtResource("4_kxyld")]
 position = Vector2(723, 426)
 
-[node name="PlateStation" parent="ProductionSystem" unique_id=478296273 instance=ExtResource("6_gm2dx")]
-position = Vector2(422, 387)
+[node name="Station1" parent="ProductionSystem" unique_id=1883467053 instance=ExtResource("4_gm2dx")]
+position = Vector2(411, 371)
+nombre_estacion = "1. Base"
+
+[node name="Station2" parent="ProductionSystem" unique_id=483196616 instance=ExtResource("4_gm2dx")]
+position = Vector2(562, 370)
+numero_estacion = 2
+nombre_estacion = "2. Lava"
+
+[node name="Station3" parent="ProductionSystem" unique_id=207847443 instance=ExtResource("4_gm2dx")]
+position = Vector2(706, 372)
+numero_estacion = 3
+nombre_estacion = "3. Corta"
+
+[node name="Station4" parent="ProductionSystem" unique_id=383552571 instance=ExtResource("4_gm2dx")]
+position = Vector2(864, 372)
+numero_estacion = 4
+nombre_estacion = "4. Cocina"
+
+[node name="Station5" parent="ProductionSystem" unique_id=168547195 instance=ExtResource("4_gm2dx")]
+position = Vector2(1032, 372)
+numero_estacion = 5
+nombre_estacion = "5. Envasa"
 
 [node name="CultivationSystem" type="Node2D" parent="." unique_id=1258887486]
 
@@ -80,7 +102,7 @@ offset_bottom = 450.0
 mouse_filter = 2
 color = Color(0.41877314, 0.70175827, 0.889334, 1)
 
-[node name="Pot" parent="CultivationSystem" unique_id=1883467053 instance=ExtResource("1_w6pw3")]
+[node name="Pot" parent="CultivationSystem" unique_id=11986951 instance=ExtResource("1_w6pw3")]
 position = Vector2(82, 446)
 
 [node name="Pot2" parent="CultivationSystem" unique_id=400367136 instance=ExtResource("1_w6pw3")]
@@ -100,3 +122,6 @@ position = Vector2(1113, 472)
 
 [node name="Fruit" parent="." unique_id=1303107448 instance=ExtResource("3_kee16")]
 position = Vector2(338, 366)
+
+[node name="Trashcan" parent="." unique_id=294265482 instance=ExtResource("10_af72o")]
+position = Vector2(1085, 598)
