@@ -33,23 +33,26 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 128
 text = "Controls"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1166002817]
+[node name="Title_txt2" type="TextEdit" parent="." unique_id=659397779]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -146.0
-offset_top = -20.0
-offset_right = 140.0
-offset_bottom = 20.0
+offset_left = -473.0
+offset_top = 251.0
+offset_right = -191.0
+offset_bottom = 330.0
 grow_horizontal = 2
-grow_vertical = 2
+theme_override_font_sizes/font_size = 31
+text = "Controls"
 
-[node name="Menu_bttn" type="Button" parent="VBoxContainer" unique_id=809671636]
-layout_mode = 2
+[node name="Menu_bttn" type="Button" parent="." unique_id=809671636]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 556.0
+offset_right = 716.0
+offset_bottom = 637.0
 theme_override_font_sizes/font_size = 53
 text = "Menu"
 
-[connection signal="pressed" from="VBoxContainer/Menu_bttn" to="." method="_on_menu_bttn_pressed"]
+[connection signal="pressed" from="Menu_bttn" to="." method="_on_menu_bttn_pressed"]

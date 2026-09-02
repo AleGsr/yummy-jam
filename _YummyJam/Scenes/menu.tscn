@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c1rba7lk3321a"]
 
 [ext_resource type="Script" uid="uid://db1l3l8nrf43s" path="res://_YummyJam/Scripts/UI/menu.gd" id="1_qyu7l"]
+[ext_resource type="Texture2D" uid="uid://olr37214flvu" path="res://_YummyJam/Assets/{0C3C7CCB-5DFD-4672-BBC5-93F54AB3AA35}.png" id="2_sxinu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpc0q"]
 bg_color = Color(0.39075086, 1.1334791e-05, 0.29530394, 1)
@@ -34,9 +35,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -154.0
-offset_top = -47.0
+offset_top = 7.0
 offset_right = 163.0
-offset_bottom = 288.0
+offset_bottom = 342.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 42
@@ -65,19 +66,10 @@ theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = SubResource("StyleBoxFlat_177iq")
 text = "Exit"
 
-[node name="TextEdit" type="TextEdit" parent="." unique_id=425866533]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -376.0
-offset_top = 40.0
-offset_right = 387.0
-offset_bottom = 248.0
-grow_horizontal = 2
-theme_override_colors/search_result_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
-theme_override_font_sizes/font_size = 130
-text = "Yummy Jam"
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1932071083]
+position = Vector2(585, 165)
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("2_sxinu")
 
 [connection signal="pressed" from="VBoxContainer/Play_bttn" to="." method="_on_play_bttn_pressed"]
 [connection signal="pressed" from="VBoxContainer/Controls_bttn" to="." method="_on_controls_bttn_pressed"]

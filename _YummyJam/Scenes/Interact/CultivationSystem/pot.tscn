@@ -1,14 +1,20 @@
 [gd_scene format=3 uid="uid://3w63541lfamq"]
 
 [ext_resource type="Script" uid="uid://cdckhnbm6lpyj" path="res://_YummyJam/Scripts/Interact/pot.gd" id="1_p2kak"]
+[ext_resource type="Texture2D" uid="uid://b7jmcg6apjqfl" path="res://_YummyJam/Assets/Pot.png" id="2_xwmsy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpc0q"]
-size = Vector2(0.4878049, 0.4878049)
+size = Vector2(0.4878049, 0.5691057)
 
 [node name="Pot" type="Area2D" unique_id=1883467053]
 script = ExtResource("1_p2kak")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1122105507]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_xwmsy")
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1365346307]
+visible = false
 custom_minimum_size = Vector2(1, 1)
 offset_left = -30.0
 offset_top = -30.0
@@ -19,7 +25,7 @@ color = Color(0.6380494, 0.3057168, 0.1981062, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1906362575]
 visible = false
-position = Vector2(3.3881318e-21, 0)
+position = Vector2(3.3881318e-21, -1.66893e-06)
 scale = Vector2(123, 123)
 shape = SubResource("RectangleShape2D_rpc0q")
 

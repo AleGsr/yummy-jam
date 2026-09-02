@@ -4,9 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://3w63541lfamq" path="res://_YummyJam/Scenes/Interact/CultivationSystem/pot.tscn" id="1_w6pw3"]
 [ext_resource type="PackedScene" uid="uid://3acnjb3cs0q0" path="res://_YummyJam/Scenes/Interact/fruit.tscn" id="3_kee16"]
 [ext_resource type="PackedScene" uid="uid://b482ucloq6pwc" path="res://_YummyJam/Scenes/Interact/CultivationSystem/water_can.tscn" id="3_kpmb5"]
+[ext_resource type="Texture2D" uid="uid://cchxfe7c1tb56" path="res://_YummyJam/Assets/GrassFloor.png" id="4_af72o"]
 [ext_resource type="PackedScene" uid="uid://dnkjuxla5lm3r" path="res://_YummyJam/Scenes/Interact/CultivationSystem/seeds.tscn" id="4_g1ddt"]
 [ext_resource type="PackedScene" uid="uid://c45rs8loelurk" path="res://_YummyJam/Scenes/Interact/ProductionSystem/station.tscn" id="4_gm2dx"]
 [ext_resource type="PackedScene" uid="uid://dmmggkdq1vjx5" path="res://_YummyJam/Scenes/Interact/ProductionSystem/conveyor.tscn" id="4_kxyld"]
+[ext_resource type="Texture2D" uid="uid://b038dainwob2e" path="res://_YummyJam/Assets/Sky.png" id="5_aqugt"]
 [ext_resource type="PackedScene" uid="uid://cjawj3helh64q" path="res://_YummyJam/Scenes/Interact/ProductionSystem/box.tscn" id="7_af72o"]
 [ext_resource type="PackedScene" uid="uid://c3d4ml18m4wog" path="res://_YummyJam/Scenes/Interact/trashcan.tscn" id="10_af72o"]
 
@@ -89,27 +91,24 @@ nombre_estacion = "5. Envasa"
 
 [node name="CultivationSystem" type="Node2D" parent="." unique_id=1258887486]
 
-[node name="GrassBackground" type="ColorRect" parent="CultivationSystem" unique_id=750516863]
-offset_top = 450.0
-offset_right = 350.0
-offset_bottom = 650.0
-mouse_filter = 2
-color = Color(0.11539843, 0.29596302, 0.076772444, 1)
+[node name="GrassFloor" type="Sprite2D" parent="CultivationSystem" unique_id=1960517298]
+position = Vector2(175.00002, 549)
+scale = Vector2(0.17089844, 0.098632805)
+texture = ExtResource("4_af72o")
 
-[node name="SkyBackground" type="ColorRect" parent="CultivationSystem" unique_id=550915697]
-offset_right = 350.0
-offset_bottom = 450.0
-mouse_filter = 2
-color = Color(0.41877314, 0.70175827, 0.889334, 1)
+[node name="SkyBg" type="Sprite2D" parent="CultivationSystem" unique_id=573080421]
+position = Vector2(174.99998, 225.5)
+scale = Vector2(0.17089844, 0.21923827)
+texture = ExtResource("5_aqugt")
 
 [node name="Pot" parent="CultivationSystem" unique_id=11986951 instance=ExtResource("1_w6pw3")]
-position = Vector2(82, 446)
+position = Vector2(84, 460)
 
 [node name="Pot2" parent="CultivationSystem" unique_id=400367136 instance=ExtResource("1_w6pw3")]
-position = Vector2(176, 447)
+position = Vector2(178, 461)
 
 [node name="Pot3" parent="CultivationSystem" unique_id=653535915 instance=ExtResource("1_w6pw3")]
-position = Vector2(265, 446)
+position = Vector2(267, 460)
 
 [node name="WaterCan" parent="CultivationSystem" unique_id=2090312606 instance=ExtResource("3_kpmb5")]
 position = Vector2(127, 537)
