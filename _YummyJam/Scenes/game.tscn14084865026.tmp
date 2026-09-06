@@ -2,29 +2,44 @@
 
 [ext_resource type="Script" uid="uid://brycudr0prjd2" path="res://_YummyJam/Scripts/Game/game.gd" id="1_8ol67"]
 [ext_resource type="PackedScene" uid="uid://3w63541lfamq" path="res://_YummyJam/Scenes/Interact/CultivationSystem/pot.tscn" id="1_w6pw3"]
-[ext_resource type="Texture2D" uid="uid://dtn4x8a0eprcr" path="res://_YummyJam/Assets/Normal flor.png" id="2_absu3"]
 [ext_resource type="PackedScene" uid="uid://3acnjb3cs0q0" path="res://_YummyJam/Scenes/Interact/fruit.tscn" id="3_kee16"]
 [ext_resource type="PackedScene" uid="uid://b482ucloq6pwc" path="res://_YummyJam/Scenes/Interact/CultivationSystem/water_can.tscn" id="3_kpmb5"]
 [ext_resource type="Texture2D" uid="uid://cchxfe7c1tb56" path="res://_YummyJam/Assets/GrassFloor.png" id="4_af72o"]
 [ext_resource type="PackedScene" uid="uid://dnkjuxla5lm3r" path="res://_YummyJam/Scenes/Interact/CultivationSystem/seeds.tscn" id="4_g1ddt"]
-[ext_resource type="PackedScene" uid="uid://c45rs8loelurk" path="res://_YummyJam/Scenes/Interact/ProductionSystem/Station.tscn" id="4_gm2dx"]
+[ext_resource type="PackedScene" uid="uid://c45rs8loelurk" path="res://_YummyJam/Scenes/Interact/ProductionSystem/station.tscn" id="4_gm2dx"]
 [ext_resource type="PackedScene" uid="uid://dmmggkdq1vjx5" path="res://_YummyJam/Scenes/Interact/ProductionSystem/conveyor.tscn" id="4_kxyld"]
 [ext_resource type="Texture2D" uid="uid://b038dainwob2e" path="res://_YummyJam/Assets/Sky.png" id="5_aqugt"]
 [ext_resource type="PackedScene" uid="uid://cjawj3helh64q" path="res://_YummyJam/Scenes/Interact/ProductionSystem/box.tscn" id="7_af72o"]
 [ext_resource type="PackedScene" uid="uid://cffsllgrltd7i" path="res://_YummyJam/Scenes/Interact/CultivationSystem/garden_shears.tscn" id="9_aqugt"]
 [ext_resource type="PackedScene" uid="uid://c3d4ml18m4wog" path="res://_YummyJam/Scenes/Interact/trashcan.tscn" id="10_af72o"]
-[ext_resource type="Texture2D" uid="uid://dt6kpsx7pn2sk" path="res://_YummyJam/Assets/Ant.png" id="14_a6217"]
 
 [node name="Game" type="Node2D" unique_id=2036357315]
 script = ExtResource("1_8ol67")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=40155113]
 
+[node name="PanelTop" type="HBoxContainer" parent="UI" unique_id=1475283123]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="LabelTimer" type="Label" parent="UI/PanelTop" unique_id=1665859036]
+layout_mode = 2
+text = "Time: 03:00"
+
+[node name="LabelPoints" type="Label" parent="UI/PanelTop" unique_id=713258245]
+layout_mode = 2
+text = "Points: 0"
+
+[node name="LabelStation" type="Label" parent="UI/PanelTop" unique_id=1271962466]
+layout_mode = 2
+text = "Station: 1. Lava"
+
 [node name="OrderPanel" type="VBoxContainer" parent="UI" unique_id=811614482]
-offset_left = 24.0
-offset_top = 43.0
-offset_right = 64.0
-offset_bottom = 120.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="TitleLabel" type="Label" parent="UI/OrderPanel" unique_id=6430828]
 layout_mode = 2
@@ -35,34 +50,15 @@ layout_mode = 2
 [node name="TimeLabel" type="Label" parent="UI/OrderPanel" unique_id=861280315]
 layout_mode = 2
 
-[node name="LabelTimer" type="Label" parent="UI" unique_id=1665859036]
-offset_left = 656.0
-offset_top = 612.0
-offset_right = 744.0
-offset_bottom = 635.0
-text = "Time: 03:00"
-
-[node name="LabelPoints" type="Label" parent="UI" unique_id=713258245]
-offset_left = 145.0
-offset_top = 612.0
-offset_right = 212.0
-offset_bottom = 635.0
-text = "Points: 0"
-
-[node name="LabelStation" type="Label" parent="UI" unique_id=1271962466]
-visible = false
-offset_left = 669.0
-offset_top = 468.0
-offset_right = 787.0
-offset_bottom = 491.0
-text = "Station: 1. Lava"
-
 [node name="ProductionSystem" type="Node2D" parent="." unique_id=2054464754]
 
-[node name="FloorBackground" type="Sprite2D" parent="ProductionSystem" unique_id=1253738984]
-position = Vector2(750, 550)
-scale = Vector2(0.39062497, 0.09765627)
-texture = ExtResource("2_absu3")
+[node name="FloorBackground" type="ColorRect" parent="ProductionSystem" unique_id=1628844998]
+offset_left = 350.0
+offset_top = 450.0
+offset_right = 1150.0
+offset_bottom = 650.0
+mouse_filter = 2
+color = Color(0.24964723, 0.25890002, 0.3188798, 1)
 
 [node name="WallBackground" type="ColorRect" parent="ProductionSystem" unique_id=1577497943]
 offset_left = 350.0
@@ -72,34 +68,35 @@ mouse_filter = 2
 color = Color(0.54355913, 0.5553405, 0.63920933, 1)
 
 [node name="ColorRect" type="ColorRect" parent="ProductionSystem" unique_id=1095687593]
-offset_left = 392.0
+offset_left = 373.0
 offset_top = 441.0
-offset_right = 1042.0
-offset_bottom = 489.0
+offset_right = 1073.0
+offset_bottom = 501.0
 color = Color(0.6052743, 0.6052743, 0.6052743, 1)
 
 [node name="Stations" type="Node2D" parent="ProductionSystem" unique_id=1101132020]
 
-[node name="Conveyor" parent="ProductionSystem" unique_id=1999575189 groups=["banda_transportadora"] instance=ExtResource("4_kxyld")]
-position = Vector2(717, 426)
+[node name="Conveyor" parent="ProductionSystem" unique_id=1999575189 instance=ExtResource("4_kxyld")]
+position = Vector2(723, 426)
 
 [node name="Station1" parent="ProductionSystem" unique_id=1883467053 instance=ExtResource("4_gm2dx")]
-position = Vector2(515, 361)
+position = Vector2(411, 371)
 escena_fruta_procesada = ExtResource("3_kee16")
 
 [node name="Station2" parent="ProductionSystem" unique_id=483196616 instance=ExtResource("4_gm2dx")]
-position = Vector2(645, 361)
-paso_estacion = 2
+position = Vector2(562, 370)
 escena_fruta_procesada = ExtResource("3_kee16")
 
 [node name="Station3" parent="ProductionSystem" unique_id=207847443 instance=ExtResource("4_gm2dx")]
-position = Vector2(775, 361)
-paso_estacion = 3
+position = Vector2(706, 372)
 escena_fruta_procesada = ExtResource("3_kee16")
 
 [node name="Station4" parent="ProductionSystem" unique_id=383552571 instance=ExtResource("4_gm2dx")]
-position = Vector2(907, 361)
-paso_estacion = 4
+position = Vector2(864, 372)
+escena_fruta_procesada = ExtResource("3_kee16")
+
+[node name="Station5" parent="ProductionSystem" unique_id=168547195 instance=ExtResource("4_gm2dx")]
+position = Vector2(1032, 372)
 escena_fruta_procesada = ExtResource("3_kee16")
 
 [node name="CultivationSystem" type="Node2D" parent="." unique_id=1258887486]
@@ -114,36 +111,31 @@ position = Vector2(174.99998, 225.5)
 scale = Vector2(0.17089844, 0.21923827)
 texture = ExtResource("5_aqugt")
 
-[node name="Pot" parent="CultivationSystem" unique_id=11986951 groups=["arbustos"] instance=ExtResource("1_w6pw3")]
-position = Vector2(84, 439)
+[node name="Pot" parent="CultivationSystem" unique_id=11986951 instance=ExtResource("1_w6pw3")]
+position = Vector2(84, 460)
 
-[node name="Pot2" parent="CultivationSystem" unique_id=400367136 groups=["arbustos"] instance=ExtResource("1_w6pw3")]
-position = Vector2(178, 459)
+[node name="Pot2" parent="CultivationSystem" unique_id=400367136 instance=ExtResource("1_w6pw3")]
+position = Vector2(178, 461)
 
-[node name="Pot3" parent="CultivationSystem" unique_id=653535915 groups=["arbustos"] instance=ExtResource("1_w6pw3")]
-position = Vector2(267, 439)
+[node name="Pot3" parent="CultivationSystem" unique_id=653535915 instance=ExtResource("1_w6pw3")]
+position = Vector2(267, 460)
 
 [node name="WaterCan" parent="CultivationSystem" unique_id=2090312606 instance=ExtResource("3_kpmb5")]
-position = Vector2(177, 534)
+position = Vector2(84, 550)
 
 [node name="Seeds" parent="CultivationSystem" unique_id=863921311 instance=ExtResource("4_g1ddt")]
-position = Vector2(86, 534)
+position = Vector2(177, 548)
 tipo_herramienta = "Semillas"
 
 [node name="GardenShears" parent="CultivationSystem" unique_id=559422885 instance=ExtResource("9_aqugt")]
-position = Vector2(270, 533)
+position = Vector2(270, 549)
 tipo_herramienta = "Tijeras"
 
-[node name="Box" parent="." unique_id=862205636 groups=["caja_entrega"] instance=ExtResource("7_af72o")]
-position = Vector2(1082, 449)
+[node name="Box" parent="." unique_id=862205636 instance=ExtResource("7_af72o")]
+position = Vector2(1113, 472)
 
 [node name="Fruit" parent="." unique_id=1303107448 instance=ExtResource("3_kee16")]
 position = Vector2(338, 366)
 
 [node name="Trashcan" parent="." unique_id=294265482 instance=ExtResource("10_af72o")]
-position = Vector2(1087, 575)
-
-[node name="Ant" type="Sprite2D" parent="." unique_id=1950684262]
-position = Vector2(1045, 624)
-scale = Vector2(0.018234218, 0.02)
-texture = ExtResource("14_a6217")
+position = Vector2(1085, 598)

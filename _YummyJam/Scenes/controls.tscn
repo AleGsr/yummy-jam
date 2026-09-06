@@ -18,33 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.77254903, 0.78431374, 1, 1)
-
-[node name="Title_txt" type="TextEdit" parent="." unique_id=1011788377]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -260.0
-offset_top = 46.0
-offset_right = 282.0
-offset_bottom = 217.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 128
-text = "Controls"
-
-[node name="Title_txt2" type="TextEdit" parent="." unique_id=659397779]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -473.0
-offset_top = 251.0
-offset_right = -191.0
-offset_bottom = 330.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 31
-text = "Controls"
+color = Color(0.7982536, 0.75524575, 0.9194391, 1)
 
 [node name="Menu_bttn" type="Button" parent="." unique_id=809671636]
 layout_mode = 0
@@ -54,5 +28,25 @@ offset_right = 716.0
 offset_bottom = 637.0
 theme_override_font_sizes/font_size = 53
 text = "Menu"
+
+[node name="Label" type="Label" parent="." unique_id=151214776]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 15.0
+offset_right = 1235.0
+offset_bottom = 237.0
+scale = Vector2(0.93351066, 0.92512804)
+theme_override_colors/font_color = Color(0.10347427, 0.0001218069, 0.18495339, 1)
+theme_override_font_sizes/font_size = 121
+text = "Instrucciones"
+
+[node name="Label2" type="Label" parent="." unique_id=1670345394]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 446.0
+offset_right = 325.0
+offset_bottom = 469.0
+theme_override_colors/font_color = Color(0.063296296, 0.008078049, 0.1379486, 1)
+text = "Mover banda transportadora"
 
 [connection signal="pressed" from="Menu_bttn" to="." method="_on_menu_bttn_pressed"]

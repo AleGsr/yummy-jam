@@ -15,6 +15,11 @@ run/main_scene="uid://c1rba7lk3321a"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+global="*uid://c2osqqlstih06"
+GameManager="*uid://bbr1urr8tfhjp"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -25,6 +30,9 @@ window/stretch/aspect="expand"
 Dropable=""
 Station=""
 Trash=""
+banda_transportadora=""
+caja_entrega=""
+arbustos=""
 
 [physics]
 

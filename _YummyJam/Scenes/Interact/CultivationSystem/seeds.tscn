@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://dnkjuxla5lm3r"]
 
+[ext_resource type="Script" uid="uid://mky4qjwq1wcr" path="res://_YummyJam/Scripts/Interact/tools.gd" id="1_nhhq6"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpc0q"]
 size = Vector2(0.4878049, 0.4878049)
 
 [node name="Seeds" type="Area2D" unique_id=1883467053]
+script = ExtResource("1_nhhq6")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1365346307]
 custom_minimum_size = Vector2(1, 1)

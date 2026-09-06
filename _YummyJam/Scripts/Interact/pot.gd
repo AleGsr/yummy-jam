@@ -1,98 +1,145 @@
 extends Area2D
 
-# Estados posibles del cultivo
-enum Estado { VACIO, SEMBRADO, REGADO, LISTO, PODRIDO }
+enum Estado { VACIO, SEMBRADO, FLORECIDO, CON_FRUTO, PODRIDO, MUERTO }
 var estado_actual: Estado = Estado.VACIO
 
-# Tiempos de espera (en segundos)
-@export var tiempo_crecimiento: float = 2.0
-@export var tiempo_para_podrirse: float = 4.0
+var riegos: int = 0
 
-var temporizador: float = 0.0
-var mouse_encima: bool = false
+@onready var visual_planta: ColorRect = $Plant
+@onready var visual_flores: CanvasItem = $Flower
+@onready var contenedor_fresas: Node2D = $Strawberry
+@onready var timer_maduracion: Timer = $TimerMaduracion
 
-# Precamargamos la escena de la fruta para instanciarla al cosechar
-var escena_fruta = preload("res://_YummyJam/Scenes/Interact/fruit.tscn")
-
-@onready var label_estado: Label = $LabelEstado
+@export var escena_fruta: PackedScene # Asigna aquí tu Fruit.tscn en el Inspector
 
 func _ready() -> void:
-	input_pickable = true
-	mouse_entered.connect(func(): mouse_encima = true)
-	mouse_exited.connect(func(): mouse_encima = false)
-	actualizar_interfaz()
+	timer_maduracion.timeout.connect(_on_timer_timeout)
+	actualizar_visual()
 
-func _process(delta: float) -> void:
-	# Lógica según el estado del cultivo
-	if estado_actual == Estado.REGADO:
-		temporizador += delta
-		if temporizador >= tiempo_crecimiento:
-			estado_actual = Estado.LISTO
-			temporizador = 0.0
-			actualizar_interfaz()
-
-	elif estado_actual == Estado.LISTO:
-		temporizador += delta
-		if temporizador >= tiempo_para_podrirse:
-			estado_actual = Estado.PODRIDO
-			actualizar_interfaz()
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if mouse_encima:
-			interactuar_con_maceta()
-
-func interactuar_con_maceta() -> void:
+func recibir_herramienta(tipo: String) -> bool:
 	match estado_actual:
 		Estado.VACIO:
-			# 1. Siembra
-			estado_actual = Estado.SEMBRADO
-			print("1. Semilla sembrada")
-			
-		Estado.SEMBRADO:
-			# 2. Riega
-			estado_actual = Estado.REGADO
-			temporizador = 0.0
-			print("2. Planta regada, creciendo...")
-			
-		Estado.LISTO:
-			# 3. Cosecha
-			_cosechar_fruta()
-			estado_actual = Estado.VACIO
-			print("3. ¡Fruta cosechada!")
-			
-		Estado.PODRIDO:
-			# Limpiar fruto pudrido
-			estado_actual = Estado.VACIO
-			print("Fruta podrida desechada. Maceta limpia.")
-			
-	actualizar_interfaz()
+			if tipo == "Semillas":
+				estado_actual = Estado.SEMBRADO
+				riegos = 0
+				actualizar_visual()
+				return true
+				
+		Estado.SEMBRADO, Estado.FLORECIDO:
+			if tipo == "Regadera":
+				riegos += 1
+				if riegos == 1 and estado_actual == Estado.SEMBRADO:
+					# 1er Riego tras sembrar: Sale el brote
+					actualizar_visual()
+				elif riegos == 2 or (estado_actual == Estado.SEMBRADO and riegos >= 1):
+					# Riego para florecer
+					estado_actual = Estado.FLORECIDO
+					actualizar_visual()
+					timer_maduracion.start(4.0) # 4 segundos para transformarse en fresas
+				elif riegos >= 3:
+					# Sobrerriego
+					estado_actual = Estado.MUERTO
+					timer_maduracion.stop()
+					limpiar_fresas()
+					actualizar_visual()
+				return true
 
-func _cosechar_fruta() -> void:
-	# Crea una nueva fruta en la posición actual
-	var nueva_fruta = escena_fruta.instantiate()
-	get_parent().add_child(nueva_fruta)
-	nueva_fruta.global_position = global_position
+		Estado.MUERTO:
+			if tipo == "Tijeras":
+				estado_actual = Estado.VACIO
+				riegos = 0
+				limpiar_fresas()
+				actualizar_visual()
+				
+				var main = get_tree().current_scene
+				if main and main.has_method("sumar_puntos"):
+					main.sumar_puntos(-50)
+				return true
+				
+	return false
 
-func actualizar_ui_texto() -> void: # Función auxiliar por consistencia
-	actualizar_interfaz()
-
-func actualizar_interfaz() -> void:
-	if not is_node_ready():
-		await ready
+func _on_timer_timeout() -> void:
+	if estado_actual == Estado.FLORECIDO:
+		estado_actual = Estado.CON_FRUTO
+		actualizar_visual()
+		generar_fresas_agarrables()
+		timer_maduracion.start(8.0) # Tiempo antes de podrirse si no se cosechan
 		
-	if not label_estado:
-		label_estado = get_node_or_null("LabelEstado")
+	elif estado_actual == Estado.CON_FRUTO:
+		estado_actual = Estado.PODRIDO
+		actualizar_visual()
+		marcar_fresas_podridas()
+
+func generar_fresas_agarrables() -> void:
+	limpiar_fresas()
+	if not escena_fruta:
+		print("¡ERROR! No asignaste la escena_fruta en el Inspector de la Maceta.")
+		return
+
+	# Coordenadas relativas a la maceta (Ajusta la Y si necesitas que salgan más arriba)
+	var posiciones = [Vector2(-20, -35), Vector2(0, -50), Vector2(20, -35)]
 	
-	if label_estado:
-		match estado_actual:
-			Estado.VACIO:
-				label_estado.text = "[Clic] Sembrar"
-			Estado.SEMBRADO:
-				label_estado.text = "[Clic] Regar"
-			Estado.REGADO:
-				label_estado.text = "Creciendo..."
-			Estado.LISTO:
-				label_estado.text = "[Clic] ¡Cosechar!"
-			Estado.PODRIDO:
-				label_estado.text = "[Clic] Limpiar Podrido"
+	for pos in posiciones:
+		var nueva_fresa = escena_fruta.instantiate()
+		
+		# Agregamos primero a la escena para inicializar sus nodos
+		contenedor_fresas.add_child(nueva_fresa)
+		
+		# Posicionamos la fresa
+		nueva_fresa.position = pos
+		
+		# Forzamos que se dibuje por ENCIMA de la maceta y la planta
+		nueva_fresa.z_index = 10 
+		
+		# Nos aseguramos de que sea visible
+		nueva_fresa.visible = true
+		
+		# Conectamos la señal de cosecha
+		if nueva_fresa.has_signal("cosechada"):
+			nueva_fresa.cosechada.connect(_on_fresa_cosechada)
+			
+	print("Fresas generadas exitosamente: ", contenedor_fresas.get_child_count())
+
+func marcar_fresas_podridas() -> void:
+	for fresa in contenedor_fresas.get_children():
+		if "es_podrida" in fresa:
+			fresa.es_podrida = true
+			if fresa.has_method("actualizar_apariencia"):
+				fresa.actualizar_apariencia()
+
+func _on_fresa_cosechada() -> void:
+	# Si ya cosechó todas las fresas de la maceta, la dejamos lista para volver a regar
+	if contenedor_fresas.get_child_count() <= 1:
+		estado_actual = Estado.SEMBRADO
+		riegos = 1 # Lista para volver a florecer con 1 riego extra
+		actualizar_visual()
+
+func limpiar_fresas() -> void:
+	for hijo in contenedor_fresas.get_children():
+		hijo.queue_free()
+
+func actualizar_visual() -> void:
+	match estado_actual:
+		Estado.VACIO:
+			visual_planta.visible = false
+			visual_flores.visible = false
+			print("Maceta vacía.")
+		Estado.SEMBRADO:
+			visual_planta.visible = (riegos >= 1)
+			if visual_planta.visible:
+				visual_planta.color = Color(0.2, 0.8, 0.2)
+			visual_flores.visible = false
+			print("Semillas plantadas.")
+		Estado.FLORECIDO:
+			visual_planta.visible = true
+			visual_flores.visible = true
+			print("Flores brotadas.")
+		Estado.CON_FRUTO, Estado.PODRIDO:
+			visual_planta.visible = true
+			visual_flores.visible = false
+			print("Fresas salieron.")
+		Estado.MUERTO:
+			visual_planta.visible = true
+			visual_planta.color = Color(0.4, 0.4, 0.4)
+			visual_flores.visible = false
+			print("Planta muerta.")

@@ -3,28 +3,27 @@
 [ext_resource type="Script" uid="uid://cgrypwm4ctcnb" path="res://_YummyJam/Scripts/Interact/station.gd" id="1_27qjg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpc0q"]
-size = Vector2(0.65853655, 0.6666666)
+size = Vector2(0.81300807, 0.81300807)
 
 [node name="Station" type="Area2D" unique_id=1883467053 groups=["Station"]]
 script = ExtResource("1_27qjg")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1365346307]
+[node name="Visual" type="ColorRect" parent="." unique_id=1365346307]
 custom_minimum_size = Vector2(1, 1)
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
 mouse_filter = 2
 color = Color(0.65185314, 0.6582898, 0.6759396, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1906362575]
 visible = false
-position = Vector2(-0.49999952, 0)
 scale = Vector2(123, 123)
 shape = SubResource("RectangleShape2D_rpc0q")
 
 [node name="LabelName" type="Label" parent="." unique_id=1144288296 groups=["Station"]]
 offset_left = -20.0
-offset_top = -12.0
+offset_top = 25.0
 offset_right = 20.0
-offset_bottom = 11.0
+offset_bottom = 48.0

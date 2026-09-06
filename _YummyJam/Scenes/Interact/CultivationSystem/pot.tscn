@@ -2,35 +2,53 @@
 
 [ext_resource type="Script" uid="uid://cdckhnbm6lpyj" path="res://_YummyJam/Scripts/Interact/pot.gd" id="1_p2kak"]
 [ext_resource type="Texture2D" uid="uid://b7jmcg6apjqfl" path="res://_YummyJam/Assets/Pot.png" id="2_xwmsy"]
+[ext_resource type="PackedScene" uid="uid://3acnjb3cs0q0" path="res://_YummyJam/Scenes/Interact/fruit.tscn" id="3_2lov6"]
+[ext_resource type="Texture2D" uid="uid://brvq83tl4tglp" path="res://_YummyJam/Assets/SBFlower.png" id="4_ctxbt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpc0q"]
-size = Vector2(0.4878049, 0.5691057)
+size = Vector2(0.52845526, 0.5691057)
 
 [node name="Pot" type="Area2D" unique_id=1883467053]
 script = ExtResource("1_p2kak")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1122105507]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_xwmsy")
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1365346307]
-visible = false
-custom_minimum_size = Vector2(1, 1)
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-mouse_filter = 2
-color = Color(0.6380494, 0.3057168, 0.1981062, 1)
+escena_fruta = ExtResource("3_2lov6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1906362575]
 visible = false
-position = Vector2(3.3881318e-21, -1.66893e-06)
+position = Vector2(-5.9604645e-08, -2.2737368e-13)
 scale = Vector2(123, 123)
 shape = SubResource("RectangleShape2D_rpc0q")
 
-[node name="LabelState" type="Label" parent="." unique_id=1021815648]
-offset_left = -18.0
-offset_top = 30.0
-offset_right = 22.0
-offset_bottom = 53.0
+[node name="TimerMaduracion" type="Timer" parent="." unique_id=48755514]
+one_shot = true
+
+[node name="BasePot" type="Sprite2D" parent="." unique_id=1122105507]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_xwmsy")
+
+[node name="Plant" type="ColorRect" parent="." unique_id=707094678]
+offset_left = -22.0
+offset_top = -70.0
+offset_right = 23.0
+offset_bottom = -20.0
+mouse_filter = 2
+color = Color(0.1201439, 0.30208778, 0.1280635, 1)
+
+[node name="Flower" type="Node2D" parent="." unique_id=237053042]
+visible = false
+
+[node name="SbFlower" type="Sprite2D" parent="Flower" unique_id=393697990]
+position = Vector2(-0.9999981, -34.999996)
+scale = Vector2(0.017, 0.017)
+texture = ExtResource("4_ctxbt")
+
+[node name="SbFlower2" type="Sprite2D" parent="Flower" unique_id=692249322]
+position = Vector2(-18.000002, -57)
+scale = Vector2(0.017, 0.017)
+texture = ExtResource("4_ctxbt")
+
+[node name="SbFlower3" type="Sprite2D" parent="Flower" unique_id=771881730]
+position = Vector2(18.000002, -57)
+scale = Vector2(0.017, 0.017)
+texture = ExtResource("4_ctxbt")
+
+[node name="Strawberry" type="Node2D" parent="." unique_id=1151832920]

@@ -1,13 +1,13 @@
 extends Area2D
 
 # Velocidad de movimiento de la cinta
-@export var velocidad: float = 80.0
+@export var velocidad: float = 20.0
 
 # Dirección (-1 = Izquierda, 1 = Derecha)
 var direccion: int = 1
 var frutas_en_banda: Array[Node2D] = []
 
-@onready var label_direccion: Label = $LabelDireccion
+@onready var label_direccion: Label = $LabelDirection
 
 func _ready() -> void:
 	# Solo conectamos las señales de áreas (ya que Fruta es un Area2D)
