@@ -1,25 +1,31 @@
 [gd_scene format=3 uid="uid://b482ucloq6pwc"]
 
 [ext_resource type="Script" uid="uid://mky4qjwq1wcr" path="res://_YummyJam/Scripts/Interact/tools.gd" id="1_xqsdb"]
+[ext_resource type="Texture2D" uid="uid://c4anx4vaqoosc" path="res://_YummyJam/Assets/GardenShaders.png" id="2_l08op"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpc0q"]
-size = Vector2(0.4878049, 0.4878049)
+size = Vector2(0.601626, 0.50406504)
 
 [node name="WaterCan" type="Area2D" unique_id=1883467053]
 script = ExtResource("1_xqsdb")
 
+[node name="GardenShaders" type="Sprite2D" parent="." unique_id=1552716685]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_l08op")
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1365346307]
+visible = false
 custom_minimum_size = Vector2(1, 1)
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
+offset_left = -37.0
+offset_top = -31.0
+offset_right = 37.0
+offset_bottom = 31.0
 mouse_filter = 2
 color = Color(0.83662707, 0.6580814, 0.81845784, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1906362575]
 visible = false
-position = Vector2(3.3881318e-21, 0)
+position = Vector2(2.3841858e-07, -7.1525574e-07)
 scale = Vector2(123, 123)
 shape = SubResource("RectangleShape2D_rpc0q")
 

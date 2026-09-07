@@ -1,25 +1,32 @@
 [gd_scene format=3 uid="uid://dnkjuxla5lm3r"]
 
 [ext_resource type="Script" uid="uid://mky4qjwq1wcr" path="res://_YummyJam/Scripts/Interact/tools.gd" id="1_nhhq6"]
+[ext_resource type="Texture2D" uid="uid://bhdbw2egp7yqq" path="res://_YummyJam/Assets/Seeds.png" id="2_ld3q2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpc0q"]
-size = Vector2(0.4878049, 0.4878049)
+size = Vector2(0.58536583, 0.5203252)
 
 [node name="Seeds" type="Area2D" unique_id=1883467053]
 script = ExtResource("1_nhhq6")
 
+[node name="Seeds" type="Sprite2D" parent="." unique_id=1963953254]
+position = Vector2(-1, 1)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_ld3q2")
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1365346307]
+visible = false
 custom_minimum_size = Vector2(1, 1)
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
+offset_left = -37.0
+offset_top = -31.0
+offset_right = 35.0
+offset_bottom = 33.0
 mouse_filter = 2
 color = Color(0.35560173, 0.25820854, 0.09815141, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1906362575]
 visible = false
-position = Vector2(3.3881318e-21, 0)
+position = Vector2(-0.99999726, 0.9999981)
 scale = Vector2(123, 123)
 shape = SubResource("RectangleShape2D_rpc0q")
 

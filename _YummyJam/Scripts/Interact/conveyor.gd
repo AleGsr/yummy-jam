@@ -1,7 +1,7 @@
 extends Area2D
 
 # Velocidad de movimiento de la cinta
-@export var velocidad: float = 20.0
+@export var velocidad: float = 16.0
 
 # Dirección (-1 = Izquierda, 1 = Derecha)
 var direccion: int = 1

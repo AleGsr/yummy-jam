@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://c1rba7lk3321a"]
 
 [ext_resource type="Script" uid="uid://db1l3l8nrf43s" path="res://_YummyJam/Scripts/UI/menu.gd" id="1_qyu7l"]
+[ext_resource type="Texture2D" uid="uid://cchxfe7c1tb56" path="res://_YummyJam/Assets/GrassFloor.png" id="2_mpjji"]
 [ext_resource type="Texture2D" uid="uid://olr37214flvu" path="res://_YummyJam/Assets/{0C3C7CCB-5DFD-4672-BBC5-93F54AB3AA35}.png" id="2_sxinu"]
+[ext_resource type="Texture2D" uid="uid://gjibnw1vph7n" path="res://_YummyJam/Assets/PackedSB.png" id="3_cr2uf"]
+[ext_resource type="Texture2D" uid="uid://b038dainwob2e" path="res://_YummyJam/Assets/Sky.png" id="3_mjuqt"]
+[ext_resource type="Texture2D" uid="uid://ctxf0aj40ijxt" path="res://_YummyJam/Assets/SB.png" id="4_0gqvo"]
+[ext_resource type="Texture2D" uid="uid://brvq83tl4tglp" path="res://_YummyJam/Assets/SBFlower.png" id="5_mpjji"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpc0q"]
-bg_color = Color(0.39075086, 1.1334791e-05, 0.29530394, 1)
+bg_color = Color(0.50980395, 0.047058824, 0.043137256, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_177iq"]
 bg_color = Color(0.39215687, 0, 0.29411766, 1)
@@ -25,7 +30,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.8627451, 1, 1)
+color = Color(0.96686167, 0.8912927, 0.9160812, 1)
+
+[node name="GrassFloor" type="Sprite2D" parent="Background" unique_id=997807853]
+position = Vector2(566, 590.5)
+scale = Vector2(0.57128906, 0.07861329)
+texture = ExtResource("2_mpjji")
+
+[node name="GrassFloor2" type="Sprite2D" parent="Background" unique_id=102760940]
+position = Vector2(566, 257)
+scale = Vector2(0.57128906, 0.25097656)
+texture = ExtResource("3_mjuqt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=652337150]
 layout_mode = 1
@@ -35,26 +50,28 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -154.0
-offset_top = 7.0
+offset_top = -27.0
 offset_right = 163.0
-offset_bottom = 342.0
+offset_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 42
 
 [node name="Play_bttn" type="Button" parent="VBoxContainer" unique_id=1983835473]
 layout_mode = 2
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 67
 theme_override_styles/normal = SubResource("StyleBoxFlat_rpc0q")
 text = "Play"
 
 [node name="Controls_bttn" type="Button" parent="VBoxContainer" unique_id=1298195299]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = SubResource("StyleBoxFlat_177iq")
 text = "Controls"
 
 [node name="Credits_bttn" type="Button" parent="VBoxContainer" unique_id=1652065325]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 31
 theme_override_styles/normal = SubResource("StyleBoxFlat_177iq")
@@ -62,14 +79,48 @@ text = "Credits"
 
 [node name="Exit_bttn" type="Button" parent="VBoxContainer" unique_id=1003983443]
 layout_mode = 2
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 68
 theme_override_styles/normal = SubResource("StyleBoxFlat_177iq")
 text = "Exit"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1932071083]
-position = Vector2(585, 165)
+visible = false
+position = Vector2(593, 193)
 scale = Vector2(0.88, 0.88)
 texture = ExtResource("2_sxinu")
+
+[node name="PackedSb" type="Sprite2D" parent="." unique_id=1761975524]
+position = Vector2(207, 407)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_cr2uf")
+
+[node name="Sb" type="Sprite2D" parent="." unique_id=1331897927]
+position = Vector2(1038, 469.00003)
+rotation = -0.49719697
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_0gqvo")
+
+[node name="Sb2" type="Sprite2D" parent="." unique_id=225506075]
+position = Vector2(902, 532)
+rotation = 0.40047923
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_0gqvo")
+
+[node name="SbFlower" type="Sprite2D" parent="." unique_id=1565967677]
+position = Vector2(41.00006, 598)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_mpjji")
+
+[node name="Label" type="Label" parent="." unique_id=365389095]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 17.0
+offset_right = 920.0
+offset_bottom = 350.0
+theme_override_colors/font_color = Color(0.87198883, 0.8391641, 0.8821909, 1)
+theme_override_font_sizes/font_size = 120
+text = "Yummy Jam
+"
 
 [connection signal="pressed" from="VBoxContainer/Play_bttn" to="." method="_on_play_bttn_pressed"]
 [connection signal="pressed" from="VBoxContainer/Controls_bttn" to="." method="_on_controls_bttn_pressed"]

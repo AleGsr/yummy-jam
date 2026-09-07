@@ -13,7 +13,12 @@ var posicion_inicial: Vector2
 var sobre_banda: bool = false
 var velocidad_banda: Vector2 = Vector2.ZERO
 
-@onready var visual: ColorRect = $Visual
+@onready var NormalSB: Sprite2D = $NormalStrawBerry
+@onready var CleanSB: Sprite2D = $CleanStrawBerry
+@onready var CutSB: Sprite2D = $CutStrawBerry
+@onready var CookedSB: Sprite2D = $CookedStrawBerry
+@onready var VasedSB: Sprite2D = $VasedStrawBerry
+@onready var DeadSB: Sprite2D = $PassedStrawBerry
 
 func _ready() -> void:
 	posicion_inicial = global_position
@@ -90,24 +95,51 @@ func _al_soltar_fresa() -> void:
 		global_position = posicion_inicial
 
 func actualizar_apariencia() -> void:
-	if not visual:
-		return
-		
 	if es_podrida:
-		visual.color = Color(0.3, 0.2, 0.1) # Marrón Podrido
+		NormalSB.visible = false
+		CleanSB.visible = false
+		CutSB.visible = false
+		CookedSB.visible = false
+		VasedSB.visible = false
+		DeadSB.visible = true
 		return
 
 	match paso_actual:
 		0:
-			visual.color = Color(0.9, 0.1, 0.1) # Fresa limpia del arbusto
+			NormalSB.visible = true
+			CleanSB.visible = false
+			CutSB.visible = false
+			CookedSB.visible = false
+			VasedSB.visible = false
+			DeadSB.visible = false
 		1:
-			visual.color = Color(0.3, 0.7, 0.9) # Lavada (Tono agua)
+			NormalSB.visible = false
+			CleanSB.visible = true
+			CutSB.visible = false
+			CookedSB.visible = false
+			VasedSB.visible = false
+			DeadSB.visible = false	
 		2:
-			visual.color = Color(0.9, 0.5, 0.1) # Cortada (Naranja/Trozos)
+			NormalSB.visible = false
+			CleanSB.visible = false
+			CutSB.visible = true
+			CookedSB.visible = false
+			VasedSB.visible = false
+			DeadSB.visible = false	
 		3:
-			visual.color = Color(0.7, 0.1, 0.3) # Cocinada (Rojo Oscuro/Mermelada)
+			NormalSB.visible = false
+			CleanSB.visible = false
+			CutSB.visible = false
+			CookedSB.visible = true
+			VasedSB.visible = false
+			DeadSB.visible = false
 		4:
-			visual.color = Color(0.9, 0.9, 0.1) # Envasada (Tarro Final / Amarillo)
+			NormalSB.visible = false
+			CleanSB.visible = false
+			CutSB.visible = false
+			CookedSB.visible = false
+			VasedSB.visible = true
+			DeadSB.visible = false
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("banda_transportadora"):

@@ -15,7 +15,7 @@ offset_top = -50.0
 offset_right = 50.0
 offset_bottom = 50.0
 mouse_filter = 2
-color = Color(0.65185314, 0.6582898, 0.6759396, 1)
+color = Color(0.06666667, 0.07058824, 0.07450981, 0.1254902)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1906362575]
 visible = false

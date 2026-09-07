@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://b7jmcg6apjqfl" path="res://_YummyJam/Assets/Pot.png" id="2_xwmsy"]
 [ext_resource type="PackedScene" uid="uid://3acnjb3cs0q0" path="res://_YummyJam/Scenes/Interact/fruit.tscn" id="3_2lov6"]
 [ext_resource type="Texture2D" uid="uid://brvq83tl4tglp" path="res://_YummyJam/Assets/SBFlower.png" id="4_ctxbt"]
+[ext_resource type="Texture2D" uid="uid://ckwcfwo0ov3jx" path="res://_YummyJam/Assets/Bush.png" id="4_vyans"]
+[ext_resource type="Texture2D" uid="uid://dlfnrs3uv5lej" path="res://_YummyJam/Assets/DeadBush.png" id="5_1c6bs"]
+[ext_resource type="Texture2D" uid="uid://c0mcu0g7c038q" path="res://_YummyJam/Assets/CultiveSeeds.png" id="6_6pv2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpc0q"]
 size = Vector2(0.52845526, 0.5691057)
@@ -25,13 +28,31 @@ one_shot = true
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_xwmsy")
 
+[node name="Bush" type="Sprite2D" parent="." unique_id=1428602276]
+visible = false
+position = Vector2(1, -51.89525)
+scale = Vector2(0.05, 0.057880875)
+texture = ExtResource("4_vyans")
+
+[node name="DeadBush" type="Sprite2D" parent="." unique_id=1135424096]
+visible = false
+position = Vector2(1, -51.500004)
+scale = Vector2(0.05, 0.058532562)
+texture = ExtResource("5_1c6bs")
+
+[node name="CultiveSeeds" type="Sprite2D" parent="." unique_id=521939114]
+visible = false
+position = Vector2(-1.000001, -24)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("6_6pv2k")
+
 [node name="Plant" type="ColorRect" parent="." unique_id=707094678]
 offset_left = -22.0
 offset_top = -70.0
 offset_right = 23.0
 offset_bottom = -20.0
 mouse_filter = 2
-color = Color(0.1201439, 0.30208778, 0.1280635, 1)
+color = Color(0.12156863, 0.3019608, 0.12941177, 0)
 
 [node name="Flower" type="Node2D" parent="." unique_id=237053042]
 visible = false

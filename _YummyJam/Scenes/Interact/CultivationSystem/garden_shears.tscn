@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cffsllgrltd7i"]
 
 [ext_resource type="Script" uid="uid://mky4qjwq1wcr" path="res://_YummyJam/Scripts/Interact/tools.gd" id="1_oqflr"]
+[ext_resource type="Texture2D" uid="uid://bchxi8ff4ctvt" path="res://_YummyJam/Assets/Scissors.png" id="2_j8i8q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpc0q"]
 size = Vector2(0.4878049, 0.4878049)
@@ -15,7 +16,7 @@ offset_top = -30.0
 offset_right = 30.0
 offset_bottom = 30.0
 mouse_filter = 2
-color = Color(0.62991357, 0.6846229, 0.6790549, 1)
+color = Color(0.6313726, 0.6862745, 0.6784314, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1906362575]
 visible = false
@@ -28,3 +29,7 @@ offset_left = -20.0
 offset_top = -12.0
 offset_right = 20.0
 offset_bottom = 11.0
+
+[node name="Scissors" type="Sprite2D" parent="." unique_id=938498700]
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("2_j8i8q")

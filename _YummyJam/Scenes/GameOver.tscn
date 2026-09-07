@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://b55j2e1g122j8"]
 
 [ext_resource type="Script" uid="uid://cl7pcg1le5xev" path="res://_YummyJam/Scripts/UI/game_over.gd" id="1_cmiwy"]
+[ext_resource type="Texture2D" uid="uid://drt1meapktlxr" path="res://_YummyJam/Assets/SB4.png" id="2_4obr0"]
+[ext_resource type="Texture2D" uid="uid://gujjhof6mli7" path="res://_YummyJam/Assets/Wall.png" id="2_62m54"]
+[ext_resource type="Texture2D" uid="uid://b7jmcg6apjqfl" path="res://_YummyJam/Assets/Pot.png" id="3_4blyh"]
+[ext_resource type="Texture2D" uid="uid://dtn4x8a0eprcr" path="res://_YummyJam/Assets/Normal flor.png" id="3_vfgov"]
+[ext_resource type="Texture2D" uid="uid://dlfnrs3uv5lej" path="res://_YummyJam/Assets/DeadBush.png" id="4_62m54"]
 
 [node name="GameOver" type="Control" unique_id=172457782]
 layout_mode = 3
@@ -18,20 +23,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.77254903, 1, 1, 1)
+color = Color(0.29649156, 0.40579897, 0.50776476, 1)
 
-[node name="Title_txt" type="TextEdit" parent="." unique_id=1011788377]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -226.0
-offset_top = 46.0
-offset_right = 228.0
-offset_bottom = 217.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 128
-text = "Credits"
+[node name="Wall" type="Sprite2D" parent="." unique_id=258404868]
+position = Vector2(576.5, 241.49998)
+scale = Vector2(0.5629883, 0.23291014)
+texture = ExtResource("2_62m54")
+
+[node name="Wall2" type="Sprite2D" parent="." unique_id=999441519]
+position = Vector2(576.5, 563.5)
+scale = Vector2(0.5629883, 0.086425774)
+texture = ExtResource("3_vfgov")
+
+[node name="Label" type="Label" parent="." unique_id=1875851394]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 27.0
+offset_right = 777.0
+offset_bottom = 254.0
+theme_override_font_sizes/font_size = 166
+text = "Score"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1166002817]
 layout_mode = 1
@@ -52,6 +63,7 @@ layout_mode = 2
 
 [node name="LabelScore" type="Label" parent="VBoxContainer" unique_id=80855395]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="Restart_bttn" type="Button" parent="VBoxContainer" unique_id=28018288]
 layout_mode = 2
@@ -62,6 +74,22 @@ text = "Restart"
 layout_mode = 2
 theme_override_font_sizes/font_size = 53
 text = "Menu"
+
+[node name="Sb4" type="Sprite2D" parent="." unique_id=1276523402]
+position = Vector2(116.000015, 455.99997)
+rotation = -0.6429165
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_4obr0")
+
+[node name="Pot" type="Sprite2D" parent="." unique_id=1562517969]
+position = Vector2(1021, 601)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_4blyh")
+
+[node name="DeadBush" type="Sprite2D" parent="." unique_id=427231423]
+position = Vector2(1034, 252)
+scale = Vector2(0.32962134, 0.4)
+texture = ExtResource("4_62m54")
 
 [connection signal="pressed" from="VBoxContainer/Restart_bttn" to="." method="_on_menu_bttn_pressed"]
 [connection signal="pressed" from="VBoxContainer/Menu_bttn" to="." method="_on_menu_bttn_pressed"]

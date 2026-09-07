@@ -1,23 +1,65 @@
 [gd_scene format=3 uid="uid://3acnjb3cs0q0"]
 
 [ext_resource type="Script" uid="uid://cdeutjntrhncb" path="res://_YummyJam/Scripts/Interact/fruit.gd" id="1_p2kak"]
+[ext_resource type="Texture2D" uid="uid://ctxf0aj40ijxt" path="res://_YummyJam/Assets/SB.png" id="2_6xc0a"]
+[ext_resource type="Texture2D" uid="uid://cevqmw3wesfvl" path="res://_YummyJam/Assets/SB2.png" id="3_bl8w7"]
+[ext_resource type="Texture2D" uid="uid://jfwgippl1jge" path="res://_YummyJam/Assets/SB3.png" id="4_fk6x0"]
+[ext_resource type="Texture2D" uid="uid://ddyhkw0xi7moj" path="res://_YummyJam/Assets/CokkedSB.png" id="5_bu6fc"]
+[ext_resource type="Texture2D" uid="uid://drt1meapktlxr" path="res://_YummyJam/Assets/SB4.png" id="5_fk6x0"]
+[ext_resource type="Texture2D" uid="uid://gjibnw1vph7n" path="res://_YummyJam/Assets/PackedSB.png" id="6_b6c0f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpc0q"]
-size = Vector2(0.1300813, 0.1300813)
+size = Vector2(0.19512194, 0.2113821)
 
 [node name="Fruit" type="Area2D" unique_id=1883467053]
 script = ExtResource("1_p2kak")
 
 [node name="Visual" type="ColorRect" parent="." unique_id=1365346307]
+visible = false
 custom_minimum_size = Vector2(1, 1)
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -11.0
+offset_top = -12.0
+offset_right = 13.0
+offset_bottom = 14.0
 mouse_filter = 2
 color = Color(0.81966126, 0.018628791, 9.62615e-07, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1906362575]
 visible = false
+position = Vector2(0.9999995, 1.0000001)
 scale = Vector2(123, 123)
 shape = SubResource("RectangleShape2D_rpc0q")
+
+[node name="NormalStrawBerry" type="Sprite2D" parent="." unique_id=1918133224]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_6xc0a")
+
+[node name="CleanStrawBerry" type="Sprite2D" parent="." unique_id=1584140103]
+visible = false
+position = Vector2(1, 3)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("3_bl8w7")
+
+[node name="CutStrawBerry" type="Sprite2D" parent="." unique_id=2098404356]
+visible = false
+position = Vector2(1, 3)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("4_fk6x0")
+
+[node name="CookedStrawBerry" type="Sprite2D" parent="." unique_id=2125566745]
+visible = false
+position = Vector2(1, 3)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("5_bu6fc")
+
+[node name="VasedStrawBerry" type="Sprite2D" parent="." unique_id=681397466]
+visible = false
+position = Vector2(1, 3)
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("6_b6c0f")
+
+[node name="PassedStrawBerry" type="Sprite2D" parent="." unique_id=316650794]
+visible = false
+position = Vector2(1, 3)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("5_fk6x0")

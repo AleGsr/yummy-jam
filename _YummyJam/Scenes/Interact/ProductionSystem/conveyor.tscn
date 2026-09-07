@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c5wics5u7sxya" path="res://_YummyJam/Scripts/Interact/conveyor.gd" id="1_rdrdg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpc0q"]
-size = Vector2(5.2845526, 0.24390243)
+size = Vector2(5.2845526, 0.16260162)
 
 [node name="Conveyor" type="Area2D" unique_id=1883467053]
 script = ExtResource("1_rdrdg")
@@ -13,18 +13,19 @@ custom_minimum_size = Vector2(1, 1)
 offset_left = -325.0
 offset_top = -15.0
 offset_right = 325.0
-offset_bottom = 15.0
+offset_bottom = 5.0
 mouse_filter = 2
-color = Color(0.10339262, 0.1295529, 0.11751328, 1)
+color = Color(0.101960786, 0.12941177, 0.11764706, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1906362575]
 visible = false
-position = Vector2(1.1368684e-13, 3.5527137e-15)
+position = Vector2(1.1368684e-13, -5)
 scale = Vector2(123, 123)
 shape = SubResource("RectangleShape2D_rpc0q")
 
 [node name="LabelDirection" type="Label" parent="." unique_id=1144288296]
-offset_left = -17.0
-offset_top = 15.0
-offset_right = 23.0
-offset_bottom = 38.0
+visible = false
+offset_left = -20.0
+offset_top = 6.0
+offset_right = 20.0
+offset_bottom = 29.0

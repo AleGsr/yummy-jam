@@ -5,7 +5,10 @@ var estado_actual: Estado = Estado.VACIO
 
 var riegos: int = 0
 
-@onready var visual_planta: ColorRect = $Plant
+@onready var visual_planta: Sprite2D = $Bush
+@onready var visual_deadplanta: Sprite2D = $DeadBush
+@onready var visual_seeds: Sprite2D = $CultiveSeeds
+
 @onready var visual_flores: CanvasItem = $Flower
 @onready var contenedor_fresas: Node2D = $Strawberry
 @onready var timer_maduracion: Timer = $TimerMaduracion
@@ -21,6 +24,7 @@ func recibir_herramienta(tipo: String) -> bool:
 		Estado.VACIO:
 			if tipo == "Semillas":
 				estado_actual = Estado.SEMBRADO
+				visual_seeds.visible = true
 				riegos = 0
 				actualizar_visual()
 				return true
@@ -28,6 +32,7 @@ func recibir_herramienta(tipo: String) -> bool:
 		Estado.SEMBRADO, Estado.FLORECIDO:
 			if tipo == "Regadera":
 				riegos += 1
+				visual_seeds.visible = false
 				if riegos == 1 and estado_actual == Estado.SEMBRADO:
 					# 1er Riego tras sembrar: Sale el brote
 					actualizar_visual()
@@ -122,12 +127,13 @@ func actualizar_visual() -> void:
 	match estado_actual:
 		Estado.VACIO:
 			visual_planta.visible = false
+			visual_deadplanta.visible = false
 			visual_flores.visible = false
 			print("Maceta vacía.")
 		Estado.SEMBRADO:
 			visual_planta.visible = (riegos >= 1)
 			if visual_planta.visible:
-				visual_planta.color = Color(0.2, 0.8, 0.2)
+				visual_planta.visible = true
 			visual_flores.visible = false
 			print("Semillas plantadas.")
 		Estado.FLORECIDO:
@@ -139,7 +145,7 @@ func actualizar_visual() -> void:
 			visual_flores.visible = false
 			print("Fresas salieron.")
 		Estado.MUERTO:
-			visual_planta.visible = true
-			visual_planta.color = Color(0.4, 0.4, 0.4)
+			visual_planta.visible = false
+			visual_deadplanta.visible = true
 			visual_flores.visible = false
 			print("Planta muerta.")

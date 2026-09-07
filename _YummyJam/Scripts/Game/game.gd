@@ -116,7 +116,7 @@ func sumar_puntos(cantidad: int) -> void:
 func actualizar_reloj_visual() -> void:
 	var minutos: int = int(tiempo_restante) / 60
 	var segundos: int = int(tiempo_restante) % 60
-	label_timer.text = "Tiempo Global: %02d:%02d" % [minutos, segundos]
+	label_timer.text = "Tiempo: %02d:%02d" % [minutos, segundos]
 	
 	
 func actualizar_ui_texto() -> void:
